@@ -1,0 +1,95 @@
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Increase height for a more immersive feel */
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Adjust transparency for better text visibility */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%); /* Darken image for better readability of text */
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 4rem; /* Larger title for more impact */
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: 1.8rem;
+  margin-top: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Flight Options Section */
+.flight-options-container {
+  padding: 40px 20px;
+  background-color: #f0f0f0; /* Light background for contrast */
+  text-align: center;
+}
+
+.flight-options-container h2 {
+  font-size: 2.5rem;
+  color: #004d99;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Popular Airlines Section */
+.popular-airlines-container {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.popular-airlines-container h2 {
+  font-size: 2.5rem;
+  color: #004d99;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Destination Options Section */
+.destination-options-container {
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+.destination-options-container h2 {
+  font-size: 2.5rem;
+  color: #004d99;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.flight-stats-container {
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}

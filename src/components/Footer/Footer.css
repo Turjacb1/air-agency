@@ -1,0 +1,64 @@
+/* General Footer Styles */
+.footer {
+  background-color: #333; /* Neutral dark background */
+  color: #f1f1f1; /* Light text for contrast */
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid layout */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Center content */
+}
+
+.footer-section {
+  padding: 10px 0;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #57ff84; /* Highlight headers */
+  text-transform: uppercase; /* Professional appearance */
+}
+
+.footer-section ul {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin: 8px 0;
+  font-size: 0.95rem; /* Standard font size */
+  line-height: 1.5; /* Comfortable spacing */
+  color: #cd0f0f; /* Subtle text color */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
+
+.footer-section ul li:hover {
+  color: #1bb054; /* Bright text on hover */
+  cursor: pointer;
+  text-decoration: underline; /* Add emphasis */
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 0.9rem; /* Small yet readable */
+  margin-top: 30px;
+  color: #aaa; /* Faded for unobtrusive look */
+  border-top: 1px solid #444; /* Top border separates content */
+  padding-top: 20px;
+}
+
+.footer-container a {
+  color: inherit; /* Match text color */
+  text-decoration: none; /* Remove underline by default */
+}
+
+.footer-container a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}

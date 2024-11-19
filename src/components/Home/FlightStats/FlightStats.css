@@ -1,0 +1,134 @@
+/* Wrapper for the entire stats section */
+.flight-stats-wrapper {
+    padding: 40px 20px;
+    background: linear-gradient(120deg, #e0f7fa, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.flight-stats-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.flight-stats-header h1 {
+    font-size: 2.5rem;
+    color: #004d99;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.flight-stats-header p {
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 0;
+}
+
+/* Stats Container */
+.flight-stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Stat Card */
+.stat-card {
+    background: linear-gradient(135deg, #ff8a65, #ff7043);
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Stat Title */
+.stat-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Stat Amount */
+.stat-amount {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* Stat Description */
+.stat-description {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .flight-stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .stat-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+.flight-stats-wrapper {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .flight-stats-header {
+    text-align: center;
+  }
+  
+  .flight-stats-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .stat-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-icon {
+    font-size: 40px;
+    color: #57ff84; /* Icon color */
+    margin-bottom: 10px;
+  }
+  
+  .stat-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .stat-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .stat-description {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  

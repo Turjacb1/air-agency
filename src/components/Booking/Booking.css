@@ -1,0 +1,139 @@
+/* General styling for booking form */
+.booking {
+  padding: 40px 30px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.booking h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.booking form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking input {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.booking input:focus {
+  border-color: #007bff;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.booking button {
+  padding: 12px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.booking button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.booking button:active {
+  transform: translateY(1px);
+}
+
+/* Additional styling for form and input */
+input[type="text"], input[type="email"], input[type="date"], input[type="number"] {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, input[type="number"]:focus {
+  border: 2px solid #007bff;
+}
+
+.booking-details {
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  text-align: center;
+}
+
+.booking-container {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.booking-container h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.booking-container p {
+  font-size: 1.1rem;
+  color: #777;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Styling for form containers */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container input {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #f3f3f3;
+  transition: border 0.3s ease;
+}
+
+.form-container input:focus {
+  border-color: #007bff;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
