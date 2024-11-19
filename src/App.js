@@ -47,6 +47,8 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute";
 
+import Payment from "./components/PaymentForm/Payment";
+
 
 const App = () => {
   return (
@@ -60,6 +62,7 @@ const App = () => {
           <Route path="/booking" element={<Booking />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Payment/>} />
         </Routes>
       </main>
       <Footer />
