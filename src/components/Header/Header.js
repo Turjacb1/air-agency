@@ -28,10 +28,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { FaBell } from "react-icons/fa"; // Import the notification bell icon
 import "./Header.css";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [notifications, setNotifications] = useState(3); // Example: Set the number of notifications
   const navigate = useNavigate();
 
   // Check authentication state on component mount
@@ -79,11 +81,19 @@ const Header = () => {
             <Link to="/contact">Contact</Link>
           </li>
           {isAuthenticated ? (
-            <li>
-              <button className="btn-signout" onClick={handleSignOut}>
-                Sign Out
-              </button>
-            </li>
+            <>
+              <li className="notification-icon">
+                <FaBell size={24} /> {/* Notification bell icon */}
+                {notifications > 0 && (
+                  <span className="notification-badge">{notifications}</span>
+                )}
+              </li>
+              <li>
+                <button className="btn-signout" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </li>
+            </>
           ) : (
             <li>
               <Link to="/login">Login</Link>

@@ -5,6 +5,7 @@ import FlightOptions from "./FlightOptions/FlightOptions";
 import PopularAirlines from "./PopularAirlines/PopularAirlines";
 import DestinationOptions from "./DestinationOptions/DestinationOptions";  // Import the DestinationOptions component
 import FlightStats from "./FlightStats/FlightStats"; // Import the FlightStats component
+import { GiAirplaneDeparture } from "react-icons/gi"; // Import airplane icon
 
 const Home = () => {
   return (
@@ -13,8 +14,16 @@ const Home = () => {
       <div className="hero">
         <div className="hero-overlay">
           <h1>Welcome to AirTravel</h1>
-          <img src={air} alt="Air Travel" className="" />
+          <img src={air} alt="Air Travel" className="hero-image" />
           <p>Plan your journey with ease and find amazing deals!</p>
+
+          {/* Flying Airplane Icon */}
+          <div className="flying-airplane">
+            <GiAirplaneDeparture size={50} className="airplane-icon" />
+          </div>
+          <div className="flying-airplane">
+            <GiAirplaneDeparture size={50} className="airplane-icon" />
+          </div>
         </div>
       </div>
 
@@ -29,8 +38,8 @@ const Home = () => {
         <PopularAirlines />
       </div>
 
- {/* Flight Stats Section */}
- <div className="flight-stats-container">
+      {/* Flight Stats Section */}
+      <div className="flight-stats-container">
         <FlightStats /> {/* Add FlightStats component */}
       </div>
 
@@ -38,8 +47,6 @@ const Home = () => {
       <div className="destination-options-container">
         <DestinationOptions />  {/* Add DestinationOptions component */}
       </div>
-
-     
     </div>
   );
 };

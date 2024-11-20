@@ -366,24 +366,78 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FaPlane, FaCalendarAlt, FaMoneyBillWave, FaTicketAlt } from "react-icons/fa";
+import { MdAirlineSeatReclineExtra, MdFlightTakeoff } from "react-icons/md";
 import "./Flights.css";
 
 const Flights = () => {
   const [flights, setFlights] = useState([
-    { id: 1, departure: "New York", destination: "London", type: "International" },
-    { id: 2, departure: "Dhaka", destination: "Kolkata", type: "Domestic" },
-    { id: 3, departure: "Dhaka", destination: "Germany", type: "International" },
-    { id: 4, departure: "New York", destination: "Boston", type: "Domestic" },
-    { id: 5, departure: "Dhaka", destination: "Chattogram", type: "Domestic" },
-    { id: 6, departure: "Dhaka", destination: "Sylhet", type: "Domestic" },
-    { id: 7, departure: "Dhaka", destination: "Chandpur", type: "Domestic" },
-    { id: 8, departure: "Dhaka", destination: "Usa", type: "International" },
-    { id: 9, departure: "Chattagram", destination: "Japan", type: "International" },
+    {
+      id: 1,
+      departure: "New York",
+      destination: "London",
+      type: "International",
+      airlines: [
+        { name: "British Airways", times: ["10:00 AM"] },
+        { name: "Delta Airlines", times: ["7:00 PM"] },
+      ],
+    },
+    {
+      id: 2,
+      departure: "Dhaka",
+      destination: "Kolkata",
+      type: "Domestic",
+      airlines: [
+        { name: "Biman Bangladesh Airlines", times: ["6:00 AM", "12:00 PM"] },
+        { name: "IndiGo", times: ["9:00 AM"] },
+        { name: "Air India", times: [ "9:00 PM"] }
+      ],
+    },
+    {
+      id: 3,
+      departure: "Dhaka",
+      destination: "Germany",
+      type: "International",
+      airlines: [
+        { name: "Emirates", times: ["11:00 AM", "5:00 PM"] },
+        { name: "Qatar Airways", times: ["8:00 AM", "2:00 PM", "10:00 PM"] },
+      ],
+    },
+    {
+      id: 4,
+      departure: "Dhaka",
+      destination: "Sylhet",
+      type: "Domestic",
+      airlines: [
+        { name: "Bangladesh Airlines", times: ["7:00 AM", "11:00 AM", "6:00 PM"] },
+        { name: "Us Bangla", times: ["9:00 AM", "1:00 PM", "5:00 PM"] },
+      ],
+    },
+    // Add more flights as needed...
+    {
+      id: 5,
+      departure: "Dhaka",
+      destination: "Japan",
+      type: "International",
+      airlines: [
+        { name: "JetBlue", times: [ "11:00 AM", ] },
+        { name: "Emirates", times: [ "5:00 PM"] },
+      ],
+    },
+    {
+      id: 5,
+      departure: "Chittagong",
+      destination: "Dhaka",
+      type: "Domestic",
+      airlines: [
+        { name: "Bangladesh Airlines", times: ["7:00 AM", ] },
+        { name: "Us Bangla", times: [ "6:00 PM",] },
+      ],
+    },
   ]);
 
   const location = useLocation();
   const searchCriteria = location.state || {};
-
   const filteredFlights = flights.filter(
     (flight) =>
       (!searchCriteria.from ||
@@ -401,6 +455,7 @@ const Flights = () => {
   const [tripType, setTripType] = useState("One-way");
   const [returnDate, setReturnDate] = useState(null);
   const [selectedAirline, setSelectedAirline] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const [selectedSeatClass, setSelectedSeatClass] = useState("Economy");
   const [ticketType, setTicketType] = useState("Regular");
   const [ticketCount, setTicketCount] = useState(1);
@@ -409,22 +464,21 @@ const Flights = () => {
 
   const calculatePrice = (basePrice) => {
     let adjustedPrice = basePrice;
-
     if (selectedSeatClass === "Business") adjustedPrice *= 1.5;
     if (selectedSeatClass === "First Class") adjustedPrice *= 2;
     if (ticketType === "Student") adjustedPrice *= 0.8;
-
     if (tripType === "Round trip") adjustedPrice *= 2;
 
     return adjustedPrice;
   };
 
   const handleBookNow = (flight) => {
-    if (selectedDate) {
+    if (selectedDate && selectedAirline && selectedTime) {
       navigate("/booking", {
         state: {
           flightId: flight.id,
           airlineName: selectedAirline,
+          flightTime: selectedTime,
           date: selectedDate.toDateString(),
           returnDate: tripType === "Round trip" ? returnDate?.toDateString() : null,
           seatClass: selectedSeatClass,
@@ -434,13 +488,15 @@ const Flights = () => {
         },
       });
     } else {
-      alert("Please select a date for your flight.");
+      alert("Please select a date, airline, and flight time.");
     }
   };
 
   return (
     <div className="flights">
-      <h2>Available Flights</h2>
+      <h2>
+        <FaPlane /> Available Flights
+      </h2>
 
       <div className="flight-type-selector">
         <label>
@@ -465,39 +521,22 @@ const Flights = () => {
         </label>
       </div>
 
-      <div className="trip-type-selector">
-        <label>
-          <input
-            type="radio"
-            name="tripType"
-            value="One-way"
-            checked={tripType === "One-way"}
-            onChange={() => setTripType("One-way")}
-          />
-          One-way
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="tripType"
-            value="Round trip"
-            checked={tripType === "Round trip"}
-            onChange={() => setTripType("Round trip")}
-          />
-          Round trip
-        </label>
-      </div>
-
       {typeFilteredFlights.length > 0 ? (
         <ul>
           {typeFilteredFlights.map((flight) => (
             <li key={flight.id}>
               <div className="flight-info">
                 <p>
-                  <strong>From:</strong> {flight.departure}
+                  <strong>
+                    <MdFlightTakeoff /> From:
+                  </strong>{" "}
+                  {flight.departure}
                 </p>
                 <p>
-                  <strong>To:</strong> {flight.destination}
+                  <strong>
+                    <MdFlightTakeoff /> To:
+                  </strong>{" "}
+                  {flight.destination}
                 </p>
                 <p>
                   <strong>Type:</strong> {flight.type}
@@ -506,23 +545,50 @@ const Flights = () => {
                 <div>
                   <strong>Select Airline:</strong>
                   <div className="airline-options">
-                    {["Emirates", "Qatar Airways", "Delta Airlines", "Air India"].map((airline) => (
-                      <label key={airline}>
+                    {flight.airlines.map((airline) => (
+                      <label key={airline.name}>
                         <input
                           type="radio"
-                          name="airline"
-                          value={airline}
-                          checked={selectedAirline === airline}
-                          onChange={() => setSelectedAirline(airline)}
+                          name={`airline-${flight.id}`}
+                          value={airline.name}
+                          checked={selectedAirline === airline.name}
+                          onChange={() => {
+                            setSelectedAirline(airline.name);
+                            setSelectedTime(null); // Reset time selection
+                          }}
                         />
-                        {airline}
+                        {airline.name}
                       </label>
                     ))}
                   </div>
                 </div>
 
+                {selectedAirline && (
+                  <div>
+                    <strong>Select Flight Time:</strong>
+                    <div className="flight-time-options">
+                      {flight.airlines
+                        .find((airline) => airline.name === selectedAirline)
+                        ?.times.map((time) => (
+                          <label key={time}>
+                            <input
+                              type="radio"
+                              name={`flightTime-${flight.id}`}
+                              value={time}
+                              checked={selectedTime === time}
+                              onChange={() => setSelectedTime(time)}
+                            />
+                            {time}
+                          </label>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
                 <div>
-                  <strong>Select Seat Class:</strong>
+                  <strong>
+                    <MdAirlineSeatReclineExtra /> Select Seat Class:
+                  </strong>
                   <div className="seat-class-options">
                     {["Economy", "Business", "First Class"].map((seatClass) => (
                       <label key={seatClass}>
@@ -540,7 +606,9 @@ const Flights = () => {
                 </div>
 
                 <div>
-                  <strong>Select Ticket Type:</strong>
+                  <strong>
+                    <FaTicketAlt /> Select Ticket Type:
+                  </strong>
                   <div className="ticket-type-options">
                     {["Regular", "Student"].map((type) => (
                       <label key={type}>
@@ -558,7 +626,10 @@ const Flights = () => {
                 </div>
 
                 <div>
-                  <strong>Price per Ticket:</strong> {calculatePrice(500).toFixed(2)} USD
+                  <strong>
+                    <FaMoneyBillWave /> Price per Ticket:
+                  </strong>{" "}
+                  {calculatePrice(500).toFixed(2)} USD
                 </div>
 
                 <div>
@@ -575,11 +646,9 @@ const Flights = () => {
                 </div>
 
                 <div>
-                  <strong>Total Price:</strong> {(calculatePrice(500) * ticketCount).toFixed(2)} USD
-                </div>
-
-                <div>
-                  <strong>Select Date:</strong>
+                  <strong>
+                    <FaCalendarAlt /> Select Date:
+                  </strong>
                   <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
@@ -590,7 +659,9 @@ const Flights = () => {
 
                 {tripType === "Round trip" && (
                   <div>
-                    <strong>Select Return Date:</strong>
+                    <strong>
+                      <FaCalendarAlt /> Select Return Date:
+                    </strong>
                     <DatePicker
                       selected={returnDate}
                       onChange={(date) => setReturnDate(date)}

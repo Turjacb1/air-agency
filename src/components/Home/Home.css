@@ -93,3 +93,37 @@
   background-color: #f8f9fa;
   text-align: center;
 }
+.hero-overlay {
+  position: relative;
+  text-align: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
+.flying-airplane {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  animation: fly 5s infinite linear; /* Animation to make the airplane fly */
+}
+
+
+.airplane-icon {
+  color: white; /* Change color to suit your design */
+}
+
+/* Keyframes for animation */
+@keyframes fly {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(50vw) rotate(10deg); /* Make it fly across the viewport */
+  }
+  100% {
+    transform: translateX(100vw) rotate(0deg);
+  }
+}

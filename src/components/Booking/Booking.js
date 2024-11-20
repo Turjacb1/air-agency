@@ -146,7 +146,7 @@ import Payment from "../PaymentForm/Payment";
 
 const Booking = () => {
   const location = useLocation();
-  const { flightId, airlineName, date, ticketCount, totalPrice, seatClass, ticketType, returnDate } = location.state || {};
+  const { flightId, airlineName, date, flightTime, ticketCount, totalPrice, seatClass, ticketType, returnDate } = location.state || {};
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -176,6 +176,7 @@ const Booking = () => {
       flightId,
       airlineName,
       date,
+      flightTime, // Added time data here
       returnDate,
       ticketCount,
       totalPrice,
@@ -207,6 +208,7 @@ const Booking = () => {
                 <p><strong>Flight ID:</strong> {flightId}</p>
                 <p><strong>Airline:</strong> {airlineName}</p>
                 <p><strong>Date:</strong> {date}</p>
+                <p><strong>Time:</strong> {flightTime}</p> {/* Displaying time */}
                 {returnDate && <p><strong>Return Date:</strong> {returnDate}</p>}
                 <p><strong>Number of Tickets:</strong> {ticketCount}</p>
                 <p><strong>Seat Class:</strong> {seatClass}</p>
